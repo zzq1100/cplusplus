@@ -21,3 +21,20 @@ int main()
 	pf = NULL;
 	return 0;
 }
+namespace bit
+{
+	// 命名空间中可以定义变量
+		//函数
+		//类型
+
+		int rand = 10;
+	int Add(int left, int right)
+	{
+		return left + right;
+	}
+	struct Node
+	{
+		struct Node* next;
+		int val;
+	};
+}
