@@ -229,56 +229,110 @@
 //	return 0;
 //}
 
+//#include<iostream>
+//using namespace std;
+//class Date
+//{
+//public:
+//	Date(int year = 1, int month = 1, int day = 1)
+//	{
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//	// 拷贝构造
+//	Date(const Date& d)
+//	{
+//		_year = d._year;
+//		_month = d._month;
+//		_day = d._day;
+//	}
+//	// 赋值重载拷贝
+//	Date& operator=(const Date& d)
+//	{
+//		_year = d._year;
+//		_month = d._month;
+//		_day = d._day;
+//		return *this;
+//	}
+//	void Print()
+//	{
+//		cout << _year << " " << _month << " " << _day << endl;
+//	}
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//
+//};
+//
+//
+//int main()
+//{
+//	Date d1(1, 1, 1);
+//	Date d2(2, 2, 2);
+//	Date d3(2025, 4, 3);
+//	// 赋值重载拷贝
+//	d1.Print(); // 输出 1 1 1
+//	d2.Print(); // 输出 2 2 2
+//	d3.Print(); // 输出 2025 4 3
+//	d1 = d2 = d3;
+//	d1.Print(); // 输出 2025 4 3
+//	d2.Print(); // 输出 2025 4 3
+//	d3.Print(); // 输出 2025 4 3
+//	return 0;
+//}
+
 #include<iostream>
-using namespace std;
-class Date
-{
-public:
-	Date(int year = 1, int month = 1, int day = 1)
-	{
-		_year = year;
-		_month = month;
-		_day = day;
-	}
-	// 拷贝构造
-	Date(const Date& d)
-	{
-		_year = d._year;
-		_month = d._month;
-		_day = d._day;
-	}
-	// 赋值重载拷贝
-	Date& operator=(const Date& d)
-	{
-		_year = d._year;
-		_month = d._month;
-		_day = d._day;
-		return *this;
-	}
-	void Print()
-	{
-		cout << _year << " " << _month << " " << _day << endl;
-	}
-private:
-	int _year;
-	int _month;
-	int _day;
-
-};
-
-
-int main()
-{
-	Date d1(1, 1, 1);
-	Date d2(2, 2, 2);
-	Date d3(2025, 4, 3);
-	// 赋值重载拷贝
-	d1.Print(); // 输出 1 1 1
-	d2.Print(); // 输出 2 2 2
-	d3.Print(); // 输出 2025 4 3
-	d1 = d2 = d3;
-	d1.Print(); // 输出 2025 4 3
-	d2.Print(); // 输出 2025 4 3
-	d3.Print(); // 输出 2025 4 3
-	return 0;
-}
+//using namespace std;
+//class Date
+//{
+//public:
+//	Date(int year = 1, int month = 1, int day = 1)
+//	{
+//		_year = year;
+//		_month = month;
+//		_day = day;
+//	}
+//	// 拷贝构造
+//	Date(const Date& d)
+//	{
+//		_year = d._year;
+//		_month = d._month;
+//		_day = d._day;
+//	}
+//	// 赋值重载拷贝
+//	Date& operator=(const Date& d)
+//	{
+//		_year = d._year;
+//		_month = d._month;
+//		_day = d._day;
+//		return *this;
+//	}
+//	void Print()
+//	{
+//		cout << _year << " " << _month << " " << _day << endl;
+//	}
+//private:
+//	int _year;
+//	int _month;
+//	int _day;
+//
+//};
+//
+//
+//int main()
+//{
+//	Date d1(1, 1, 1);
+//	Date d2(2, 2, 2);
+//	Date d3(2025, 4, 3);
+//	// 赋值重载拷贝
+//	d1.Print(); // 输出 1 1 1
+//	d2.Print(); // 输出 2 2 2
+//	d3.Print(); // 输出 2025 4 3
+//	d1 = d2 = d3;
+//	d1.Print(); // 输出 2025 4 3
+//	d2.Print(); // 输出 2025 4 3
+//	d3.Print(); // 输出 2025 4 3
+//	return 0;
+//}
