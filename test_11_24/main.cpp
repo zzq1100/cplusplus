@@ -424,6 +424,51 @@
 //}
 
 
+//#include <stdio.h>
+//#define MAX_SIZE 1000000 
+//
+//int main() {
+//    // 关闭输入输出缓冲，解决大数据量读写慢的核心问题
+//    setvbuf(stdin, NULL, _IONBF, 0);
+//    setvbuf(stdout, NULL, _IONBF, 0);
+//
+//    int arr[MAX_SIZE];
+//    int n, i, j = 0;
+//
+//    // 快速读取数组长度（避免scanf冗余操作）
+//    scanf("%d", &n);
+//    // 批量读取数组元素（循环无冗余逻辑）
+//    for (i = 0; i < n; i++) {
+//        scanf("%d", &arr[i]);
+//    }
+//
+//    // 边界处理：数组为空直接输出（避免后续循环）
+//    if (n == 0) {
+//        printf("0\n");
+//        return 0;
+//    }
+//
+//    // 核心去重：双指针原地修改（无额外操作，最快逻辑）
+//    for (i = 1; i < n; i++) {
+//        if (arr[i] != arr[j]) {
+//            arr[++j] = arr[i];  // 合并j++和赋值，减少指令
+//        }
+//    }
+//
+//    int new_len = j + 1;
+//
+//    // 输出优化：先输出长度，再批量输出数组（减少printf调用次数）
+//    printf("%d\n", new_len);
+//    for (i = 0; i < new_len; i++) {
+//        if (i > 0) printf(" ");  // 避免最后多输出空格，减少判断次数
+//        printf("%d", arr[i]);
+//    }
+//    printf("\n");
+//
+//    return 0;
+//}
+
+
 #include <stdio.h>
 #define MAX_SIZE 1000000 
 
