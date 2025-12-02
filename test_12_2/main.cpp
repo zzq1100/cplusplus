@@ -152,6 +152,31 @@ int main()
 	}
 	cout << endl;*/
 
+	/*for (int i = 0; i < s2.size(); i++)
+	{
+		cout << s2[i] << " ";
+	}
+	cout << endl;
+
+	string::iterator it = s2.begin();
+	while (it != s2.end())
+	{
+		cout << *it << " ";
+		it++;
+	}
+	cout << endl;
+
+	for (auto ch : s2)
+	{
+		cout << ch << " ";
+	}
+	cout << endl;*/
+
+
+
+
+
+
 	for (int i = 0; i < s2.size(); i++)
 	{
 		cout << s2[i] << " ";
@@ -171,7 +196,5 @@ int main()
 		cout << ch << " ";
 	}
 	cout << endl;
-
-
 	return 0;
 }
