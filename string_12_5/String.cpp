@@ -169,7 +169,7 @@ istream& operator>>(istream& in, String& s)
 	s.clear();
 	char ch;
 	ch = in.get();
-	while (ch != '\0' || ch != ' ')
+	while (ch != '\0' && ch != ' ')
 	{
 		s += ch;
 		ch = in.get();
