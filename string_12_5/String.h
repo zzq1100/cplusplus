@@ -38,22 +38,23 @@ public:
 		,_capacity(0)
 	{ }*/
 
-	String(const char* str = "")
+	void swap(String& s)
 	{
-		_size = strlen(str);
-		_str = new char[_size + 1];
-		// capacity 不包含 '\0'
-		_capacity = _size;
-		strcpy(_str, str);
+		std::swap(_str, s._str);
+		std::swap(_size, s._size);
+		std::swap(_capacity, s._capacity);
 	}
 
-	String(const String& str)
+	
+
+	/*String(const String& str)
 	{
 		_str = new char[str._capacity + 1];
 		strcpy(_str, str._str);
 		_size = str._size;
 		_capacity = str._capacity;
-	}
+	}*/
+	
 
 	~String()
 	{
@@ -62,7 +63,7 @@ public:
 		_size = _capacity = 0;
 	}
 
-	String& operator=(const String& s)
+	/*String& operator=(const String& s)
 	{
 		if (this != &s)
 		{
@@ -71,6 +72,31 @@ public:
 			strcpy(_str, s._str);
 			_size = s._size;
 			_capacity = s._capacity;
+		}
+		return *this;
+	}*/
+	String(const char* str = "")
+	{
+		_size = strlen(str);
+		_str = new char[_size + 1];
+		// capacity 不包含 '\0'
+		_capacity = _size;
+		strcpy(_str, str);
+	}
+	String(const String& str)
+	{
+		String tmp(str._str);
+		swap(tmp);
+	}
+	String& operator=(const String& s)
+	{
+		if (this != &s)
+		{
+			// 为什么下面的调用构造函数
+			String tmp(s._str);
+			// 为什么下面的调用拷贝构造
+			String tmp(s);
+			swap(tmp);
 		}
 		return *this;
 	}
