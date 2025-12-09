@@ -64,6 +64,33 @@
 //    }
 //}
 
+//int i = 0, cur = -1;
+//for (i = 0; i < nums.size(); i++)
+//{
+//    if (nums[i])
+//    {
+//        swap(nums[i], nums[++cur]);
+//    }
+//}
+
+//int i = 0, cur = -1;
+//for (i = 0; i < nums.size(); i++)
+//{
+//    if (nums[i])
+//    {
+//        swap(nums[i], nums[++cur]);
+//    }
+//}
+
+//int i = 0, cur = -1;
+//for (i = 0; i < nums.size(); i++)
+//{
+//    if (nums[i])
+//    {
+//        swap(nums[i], nums[++cur]);
+//    }
+//}
+
 
 #include <iostream>
 #include <vector>
@@ -98,7 +125,7 @@ void clear(int x, int y)
 
 void move(int x1, int y1, int x2)
 {
-	for (int i = y1 + 1; i < p[x1].size(); i++)
+	for (int i = y1; i < p[x1].size(); i++)
 	{
 		int tmp = p[x1][i];
 		p[x2].push_back(tmp);
