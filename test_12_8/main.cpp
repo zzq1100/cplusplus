@@ -92,45 +92,150 @@
 //}
 
 
-#include <iostream>
-#include <vector>
+//#include <iostream>
+//#include <vector>
+//using namespace std;
+//
+//int n;
+//const int N = 30;
+//vector<int> p[N];
+//typedef pair<int, int> PII;
+//
+//PII find(int x)
+//{
+//	for (int i = 0; i < n; i++)
+//	{
+//		for (int j = 0; i < p[i].size(); j++)
+//		{
+//			if (p[i][j] == x)
+//				return { i, j };
+//		}
+//	}
+//}
+//
+//void clear(int x, int y)
+//{
+//	for (int i = y + 1; i < p[x].size(); i++)
+//	{
+//		int tmp = p[x][i];
+//		p[tmp].push_back(tmp);
+//	}
+//	p[x].resize(y + 1);
+//}
+//
+//void move(int x1, int y1, int x2)
+//{
+//	for (int i = y1; i < p[x1].size(); i++)
+//	{
+//		int tmp = p[x1][i];
+//		p[x2].push_back(tmp);
+//	}
+//	p[x1].resize(y1);
+//}
+//
+//int main()
+//{
+//	cin >> n;
+//	for (int i = 0; i < n; i++)
+//	{
+//		p[i].push_back(i);
+//	}
+//
+//	string op1, op2;
+//	int a, b;
+//	while (cin >> op1 >> a >> op2 >> b)
+//	{
+//		PII x = find(a);
+//		PII y = find(b);
+//		int x1 = x.first, y1 = x.second;
+//		int x2 = y.first, y2 = y.second;
+//
+//		if (x1 == x2)
+//			continue;
+//
+//		if (op1 == "move")
+//		{
+//			clear(x1, y1);
+//		}
+//
+//		if (op2 == "onto")
+//		{
+//			clear(x2, y2);
+//		}
+//
+//		move(x1, y1, x2);
+//		for (int i = 0; i < n; i++)
+//		{
+//			cout << i << ':' << ' ';
+//			for (int j = 0; j < p[i].size(); j++)
+//			{
+//				cout << p[i][j] << ' ';
+//			}
+//			cout << endl;
+//		}
+//	}
+//	return 0;
+//}
+//
+//
+//string str;
+//int end1 = num1.size() - 1;
+//int end2 = num2.size() - 1;
+//int next = 0;
+//while (end1 >= 0 || end2 >= 0)
+//{
+//	int val1 = end1 >= 0 ? num1[end1--] - '0' : 0;
+//	int val2 = end2 >= 0 ? num2[end2--] - '0' : 0;
+//	int ret = val1 + val2 + next;
+//	next = ret / 10;
+//	ret %= 10;
+//	str += ('0' + ret);
+//}
+//if (next == 1)
+//str += '1';
+//reverse(str.begin(), str.end());
+//return str;
+
+
+#include<iostream>
+#include<vector>
 using namespace std;
 
-int n;
 const int N = 30;
-vector<int> p[N];
+vector<int> arr[N];
+int n;
 typedef pair<int, int> PII;
 
-PII find(int x)
+PII find(int num)
 {
 	for (int i = 0; i < n; i++)
 	{
-		for (int j = 0; i < p[i].size(); j++)
+		for (int j = 0; j < arr[i].size(); j++)
 		{
-			if (p[i][j] == x)
+			if (arr[i][j] == num)
 				return { i, j };
 		}
 	}
 }
 
-void clear(int x, int y)
+void move(int x, int y)
 {
-	for (int i = y + 1; i < p[x].size(); i++)
+	for (int i = y + 1; i < arr[x].size(); i++)
 	{
-		int tmp = p[x][i];
-		p[tmp].push_back(tmp);
+		int tmp = arr[x][i];
+		arr[tmp].push_back(tmp);
 	}
-	p[x].resize(y + 1);
+	arr[x].resize(y + 1);
 }
 
-void move(int x1, int y1, int x2)
+void put(int x1, int y1, int x2)
 {
-	for (int i = y1; i < p[x1].size(); i++)
+	for (int i = y1; i < arr[x1].size(); i++)
 	{
-		int tmp = p[x1][i];
-		p[x2].push_back(tmp);
+		int tmp = arr[x1][i];
+		arr[x2].push_back(tmp);
 	}
-	p[x1].resize(y1);
+	arr[x1].resize(y1);
 }
 
 int main()
@@ -138,41 +243,38 @@ int main()
 	cin >> n;
 	for (int i = 0; i < n; i++)
 	{
-		p[i].push_back(i);
+		arr[i].push_back(i);
 	}
-
 	string op1, op2;
-	int a, b;
-	while (cin >> op1 >> a >> op2 >> b)
+	int num1, num2;
+	while (cin >> op1 >> num1 >> op2 >> num2)
 	{
-		PII x = find(a);
-		PII y = find(b);
-		int x1 = x.first, y1 = x.second;
-		int x2 = y.first, y2 = y.second;
-
+		PII _num1 = find(num1);
+		PII _num2 = find(num2);
+		int x1 = _num1.first, y1 = _num1.second;
+		int x2 = _num2.first, y2 = _num2.second;
 		if (x1 == x2)
 			continue;
-
 		if (op1 == "move")
 		{
-			clear(x1, y1);
+			move(x1, y1);
 		}
-
 		if (op2 == "onto")
 		{
-			clear(x2, y2);
+			move(x2, y2);
 		}
-
-		move(x1, y1, x2);
-		for (int i = 0; i < n; i++)
-		{
-			cout << i << ':' << ' ';
-			for (int j = 0; j < p[i].size(); j++)
-			{
-				cout << p[i][j] << ' ';
-			}
-			cout << endl;
-		}
+		put(x1, y1, x2);
 	}
+	for (int i = 0; i < n; i++)
+	{
+		cout << i << ":";
+		for (int j = 0; j < arr[i].size(); j++)
+		{
+			cout << " " << arr[i][j];
+		}
+		cout << endl;
+	}
+
+
 	return 0;
 }
