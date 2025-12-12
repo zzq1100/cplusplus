@@ -1,15 +1,16 @@
 #include"string.h"
-using namespace zzq;
-void test_01()
+namespace zzq
 {
-	string s1;
+	void test_01()
+	{
+		string s1;
+	}
 }
-
 
 
 
 int main()
 {
-	test_01();
+	zzq::test_01();
 	return 0;
 }
