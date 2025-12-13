@@ -20,6 +20,7 @@ namespace zzq
 			delete[] _str;
 			_size = _capacity = 0;
 		}
+		
 	private:
 		char* _str;
 		size_t _size;
