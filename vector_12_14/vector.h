@@ -83,7 +83,7 @@ namespace zzq
 
 		void pop_back()
 		{
-			if (!= r = empty())
+			if (!empty())
 			{
 				--_finish;
 			}
@@ -106,6 +106,16 @@ namespace zzq
 			}
 			*pos = x;
 			++_finish;
+		}
+
+		void erase(iterator pos)
+		{
+			while (pos < _finish - 1)
+			{
+				*pos = *(pos + 1);
+				++pos;
+			}
+			--_finish;
 		}
 
 	private:
@@ -134,7 +144,7 @@ namespace zzq
 		v.push_back(3);
 		v.push_back(4);
 		v.push_back(5);
-		for (size_t i = 0; i < v.size(); i++)
+		/*for (size_t i = 0; i < v.size(); i++)
 		{
 			cout << v[i] << " ";
 		}
@@ -146,13 +156,17 @@ namespace zzq
 			cout << *it << " ";
 			++it;
 		}
-		cout << endl;
+		cout << endl;*/
 
-		for (auto e : v)
+		/*for (auto e : v)
 		{
 			cout << e << " ";
 		}
-		cout << endl;
+		cout << endl;*/
+
+		print_vector(v);
+		auto f = find(v.begin(), v.end(), 4);
+		v.erase(f);
 
 		print_vector(v);
 	}
