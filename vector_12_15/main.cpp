@@ -4,6 +4,6 @@ using namespace zzq;
 
 int main()
 {
-	test();
+	test01();
 	return 0;
 }
