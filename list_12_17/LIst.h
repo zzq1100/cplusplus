@@ -28,6 +28,7 @@ namespace zzq
 		list_iterator(Node* node)
 			:_node(node)
 		{ }
+		
 		T& operator*() { return _node->_data; }
 
 		Self& operator++()
