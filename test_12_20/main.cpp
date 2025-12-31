@@ -289,7 +289,27 @@ int main() {
     printf("%d\n", n + m);
     return 0;
 }
+int main() {
+    int n;
 
+    scanf("%d", &n);
+
+    int m = inverse(n);
+
+    printf("%d\n", n + m);
+    return 0;
+}
+
+int main() {
+    int n;
+
+    scanf("%d", &n);
+
+    int m = inverse(n);
+
+    printf("%d\n", n + m);
+    return 0;
+}
 
 
 
