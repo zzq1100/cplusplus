@@ -278,3 +278,17 @@ int main()
 
 	return 0;
 }
+
+int main()
+{
+	int i;
+	Student s1("name_s1", "address_s1", "tele_s1");
+
+	Student s2(s1);
+
+	Student s3("name_s3", "address_s3", "tele_s3");
+
+	s3 = s1;
+
+	return 0;
+}
