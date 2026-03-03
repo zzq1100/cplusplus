@@ -13,7 +13,11 @@ int main()
 
 	t.InOrder();
 
+	bool ret = t.Find(8);
+	cout << ret;
 
+	t.Erase(8);
+	t.InOrder();
 
 	return 0;
 }
