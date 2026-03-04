@@ -16,8 +16,15 @@ int main()
 	bool ret = t.Find(8);
 	cout << ret;
 
-	t.Erase(8);
+	//t.Erase(8);
 	t.InOrder();
+
+	for (auto e : a)
+	{
+		t.Erase(e);
+		t.InOrder();
+	}
+
 
 	return 0;
 }
