@@ -29,6 +29,72 @@ class AVLTree
 
 public:
 
+	void RotateR(Node* parent)
+	{
+		Node* subL = parent->_left;
+		Node* subLR = subL->_right;
+		Node* pParent = parent->_parent;
+
+		subL->_right = parent;
+		parent->_parent = subL;
+		parent->_left = subLR;
+		if (subLR)
+			subLR->_parent = parent;
+
+		if (parent == _root)
+		{
+			_root = subL;
+			subL->_parent = nulllptr;
+		}
+
+		else
+		{
+			subL->_parent = pParent;
+
+			if (pParent->_left == parent)
+				pParent->_left = subL;
+			else
+				pParent->_right = subL;
+		}
+
+		subL->_bf = 0;
+		parent->_bf = 0;
+	}
+
+	void RotateL(Node* parent)
+	{
+		Node* subR = parent->_right;
+		Node* subRL = subR->_left;
+		Node* pParent = parent->_parent;
+
+		subR->_left = parent;
+		parent->_parent = subR;
+		parent->_right = subRL;
+		if (subRL)
+			subRL->_parent = parent;
+
+		if (parent == _root)
+		{
+			subR = _root;
+			subR->_parent = nullptr;
+		}
+
+		else
+		{
+			if (pParent->_left == parent)
+				pParent->_left = subR;
+			else
+				pParent->_right = subR;
+
+			subR->_parent = pParent;
+		}
+
+		subR->_bf = 0;
+		parent->_bf = 0;
+	}
+
+
+
 	bool Insert(const pair<K, V>& kv)
 	{
 		if (_root == nullptr)
@@ -83,6 +149,10 @@ public:
 			else if (parent->_bf == -2 || parent->_bf == 2)
 			{
 				// 旋转
+				if (parent->_bf == -2 && cur->_bf == -1)
+					RotateR(parent);
+				else if (parent->_bf == 2 && cur->_bf == 1)
+					RotateL(parent);
 
 
 
