@@ -1,25 +1,26 @@
 #pragma once
 #include<iostream>
+
 using namespace std;
 
 
 template <class K, class V>
 struct AVLTreeNode
 {
-
+	AVLTreeNode(const pair<K, V>& kv)
+			:_kv(kv)
+			,_left(nullptr)
+			,_right(nullptr)
+			,_parent(nullptr)
+			_bf(0)
+		{ }
 	pair<K, V> _kv;
 	AVLTreeNode* _left;
 	AVLTreeNode* _right;
 	AVLTreeNode* _parent;
 	int _bf;
 
-	AVLTreeNode(const pair<K, V>& kv)
-		:_kv(kv)
-		,_left(nullptr)
-		,_right(nullptr)
-		,_parent(nullptr)
-		_bf(0)
-	{ }
+	
 };
 
 template <class K, class V>
@@ -93,7 +94,71 @@ public:
 		parent->_bf = 0;
 	}
 
+	void RotateLR(Node* parent)
+	{
+		Node* subL = parent->_left;
+		Node* subLR = subL->_right;
+		int bf = subLR->_bf;
 
+		RotateL(parent->_left);
+		RotateR(parent);
+
+		if (bf == -1)
+		{
+			subL->_bf = 0;
+			subLR->_bf = 0;
+			parent->_bf = 1;
+		}
+		else if (bf == 1)
+		{
+			subL->_bf = -1;
+			subLR->_bf = 0;
+			parent->_bf = 0;
+		}
+		else if (bf == 0)
+		{
+			subL->_bf = 0;
+			subLR->_bf = 0;
+			parent->_bf = 0;
+		}
+		else
+		{
+			assert(false);
+		}
+	}
+
+	void RotateRL(Node* parent)
+	{
+		Node* subR = parent;
+		Node* subRL = subR->_left;
+		int bf = subRL->_bf;
+
+		RotateR(parent->_right);
+		RotateL(parent);
+
+		if (bf == -1)
+		{
+			subR->_bf = 1;
+			subRL->_bf = 0;
+			parent->_bf = 0;
+		}
+		else if (bf == 1)
+		{
+			subR->_bf = 0;
+			subRL->_bf = 0;
+			parent->_bf = -1;
+		}
+		else if (bf == 0)
+		{
+			subR->_bf = 0;
+			subRL->_bf = 0;
+			parent->_bf = 0;
+		}
+		else
+		{
+			assert(false);
+		}
+	}
 
 	bool Insert(const pair<K, V>& kv)
 	{
@@ -153,9 +218,12 @@ public:
 					RotateR(parent);
 				else if (parent->_bf == 2 && cur->_bf == 1)
 					RotateL(parent);
-
-
-
+				else if (parent->_bf == -2 && cur->_bf == 1)
+					RotateLR(parent);
+				else if (parent->_bf == 2 && cur->_bf == -1)
+					RotateRL(parent);
+				else
+					assert(false);
 
 				break;
 			}
@@ -166,7 +234,23 @@ public:
 		}
 	}
 
+	void InOrder()
+	{
+		_InOrder(_root);
+		cout << endl;
+	}
 
 private:
+
+	void _InOrder(Node* root)
+	{
+		if (root == nullptr)
+			return;
+
+		_InOrder(root->_left);
+		cout << root->_kv << " ";
+		_InOrder(root->_right);
+	}
+
 	Node* _root = nullptr;
 };
